@@ -5,7 +5,7 @@ metadata:
   labels:
     app: hello-world
 spec:
-  replicas: {{ .Values.replicas }}
+  replicas: 2
   selector:
     matchLabels:
       app: hello-world
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: matjaramillo/matias-jaramillo-cicd:1.0
         ports:
-        - containerPort: {{ .Values.containerPort }}
+        - containerPort: 8080
