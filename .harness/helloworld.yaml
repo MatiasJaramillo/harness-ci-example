@@ -3,7 +3,22 @@ service:
   identifier: helloworld
   serviceDefinition:
     type: Kubernetes
-    spec: {}
+    spec:
+      manifests:
+        - manifest:
+            identifier: manifest_example
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: github_connector
+                  gitFetchType: Branch
+                  paths:
+                    - .harness
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
   gitOpsEnabled: false
   orgIdentifier: default
   projectIdentifier: NodeJSCICD
