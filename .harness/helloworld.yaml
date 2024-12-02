@@ -16,8 +16,9 @@ service:
                   gitFetchType: Branch
                   paths:
                     - .harness/helloworld.yaml
-                    - .harness/values.yaml # Include the values.yaml file
                   branch: main
+              valuesPaths:
+                - .harness/values.yaml
               skipResourceVersioning: false
               enableDeclarativeRollback: false
   gitOpsEnabled: false
