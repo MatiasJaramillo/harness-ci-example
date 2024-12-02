@@ -1,0 +1,23 @@
+service:
+  name: hello-world
+  identifier: helloworld
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: k8s_manifest
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: github_connector
+                  gitFetchType: Branch
+                  paths:
+                    - .harness/helloworld.yaml
+                  branch: main
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+  orgIdentifier: default
+  projectIdentifier: NodeJSCICD
