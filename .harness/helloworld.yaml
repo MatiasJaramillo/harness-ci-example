@@ -15,7 +15,8 @@ service:
                   connectorRef: github_connector
                   gitFetchType: Branch
                   paths:
-                    - .harness/helloworld.yaml # Ensure the file path points to the correct manifest file
+                    - .harness/helloworld.yaml
+                    - .harness/values.yaml # Include the values.yaml file
                   branch: main
               skipResourceVersioning: false
               enableDeclarativeRollback: false
