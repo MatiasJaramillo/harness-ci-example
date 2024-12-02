@@ -1,0 +1,13 @@
+infrastructureDefinition:
+  name: infra
+  identifier: infra
+  orgIdentifier: default
+  projectIdentifier: NodeJSCICD
+  environmentRef: preprod
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: kubernetes_connector
+    namespace: harness-delegate-ng
+    releaseName: release-<+INFRA_KEY_SHORT_ID>
+  allowSimultaneousDeployments: false
