@@ -1,0 +1,9 @@
+service:
+  name: hello-world
+  identifier: helloworld
+  serviceDefinition:
+    type: Kubernetes
+    spec: {}
+  gitOpsEnabled: false
+  orgIdentifier: default
+  projectIdentifier: NodeJSCICD
