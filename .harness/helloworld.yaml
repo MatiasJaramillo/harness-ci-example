@@ -1,26 +1,21 @@
-service:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: hello-world
-  identifier: helloworld
-  serviceDefinition:
-    type: Kubernetes
+  labels:
+    app: hello-world
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
     spec:
-      manifests:
-        - manifest:
-            identifier: manifest_example
-            type: K8sManifest
-            spec:
-              store:
-                type: Github
-                spec:
-                  connectorRef: github_connector
-                  gitFetchType: Branch
-                  paths:
-                    - .harness/helloworld.yaml
-                  branch: main
-              valuesPaths:
-                - .harness/values.yaml
-              skipResourceVersioning: false
-              enableDeclarativeRollback: false
-  gitOpsEnabled: false
-  orgIdentifier: default
-  projectIdentifier: NodeJSCICD
+      containers:
+      - name: hello-world
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        ports:
+        - containerPort: {{ .Values.containerPort }}
